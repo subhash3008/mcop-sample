@@ -90,7 +90,7 @@ export class StudentFormComponent implements OnInit {
         title: ['', Validators.required],
         content: ['', [Validators.required, this.maxWordsValidation.bind(this)]]
       }),
-      otherReferee: [''],
+      otherReferee: [null],
       positionApplied: ['', Validators.required]
     });
     console.log('INITIALIZED : ', this.studentForm);

@@ -13,19 +13,19 @@
       <label class="post-selection-label" for="housePrefect">House Prefect</label>
     </div>
     <div class="form-group">
-      <label>Name : </label>
+      <label class="text-label">Name : </label>
       <div class="form-group-input">
         <span class="form-text">{{ studentDetails?.studentName }}</span>
       </div>
     </div>
     <div class="form-group">
-      <label>Class : </label>
+      <label class="text-label">Class : </label>
       <div class="form-group-input">
         <span class="form-text">{{ studentDetails?.class }}</span>
       </div>
     </div>
     <div class="form-group">
-      <label>House : </label>
+      <label class="text-label">House : </label>
       <div class="form-group-input">
         <span class="form-text">{{ studentDetails?.house }}</span>
       </div>
@@ -222,104 +222,104 @@
         <li>What I perceive(your understanding of the issue)</li>
         <li>What I suggest/solutions.</li>
       </ul>
-    </div>
-    <div class="form-group" formGroupName="issue1">
-      <label>Topic 1 <span class="required">*</span></label>
-      <div class="form-group-input">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="title"
-          placeholder="WRITE/PASTE TITLE HERE"
-          *ngIf="!formSubmitted"
-        />
-        <p class="error-text" *ngIf="studentForm.get('issue1.title').hasError('required') && studentForm.get('issue1.title').touched && !formSubmitted">
-          This field is Required.
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.title').value }}</p>
-        <textarea
-          type="text"
-          class="form-control"
-          formControlName="content"
-          placeholder="WRITE/PASTE CONTENT HERE"
-          *ngIf="!formSubmitted"
-        ></textarea>
-        <div class="textarea-footer" *ngIf="!formSubmitted">
-          ( Maximum 250 words )
+      <div class="form-group" formGroupName="issue1">
+        <label class="space-left">Topic 1 <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="WRITE/PASTE TITLE HERE"
+            *ngIf="!formSubmitted"
+          />
+          <p class="error-text" *ngIf="studentForm.get('issue1.title').hasError('required') && studentForm.get('issue1.title').touched && !formSubmitted">
+            This field is Required.
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.title').value }}</p>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="content"
+            placeholder="WRITE/PASTE CONTENT HERE"
+            *ngIf="!formSubmitted"
+          ></textarea>
+          <div class="textarea-footer" *ngIf="!formSubmitted">
+            ( Maximum 250 words )
+          </div>
+          <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('required') && studentForm.get('issue1.content').touched && !formSubmitted">
+            This field is Required. 
+          </p>
+          <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('maxWords') && studentForm.get('issue1.content').touched && !formSubmitted">
+            This maximum length for this field is 250 words. 
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.content').value }}</p>
         </div>
-        <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('required') && studentForm.get('issue1.content').touched && !formSubmitted">
-          This field is Required. 
-        </p>
-        <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('maxWords') && studentForm.get('issue1.content').touched && !formSubmitted">
-          This maximum length for this field is 250 words. 
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.content').value }}</p>
       </div>
-    </div>
-    <div class="form-group" formGroupName="issue2">
-      <label>Topic 2 <span class="required">*</span></label>
-      <div class="form-group-input">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="title"
-          placeholder="WRITE/PASTE TITLE HERE"
-          *ngIf="!formSubmitted"
-        />
-        <p class="error-text" *ngIf="studentForm.get('issue2.title').hasError('required') && studentForm.get('issue2.title').touched && !formSubmitted">
-          This field is Required.
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.title').value }}</p>
-        <textarea
-          type="text"
-          class="form-control"
-          formControlName="content"
-          placeholder="WRITE/PASTE CONTENT HERE"
-          *ngIf="!formSubmitted"
-        ></textarea>
-        <div class="textarea-footer" *ngIf="!formSubmitted">
-          ( Maximum 250 words )
+      <div class="form-group" formGroupName="issue2">
+        <label class="space-left">Topic 2 <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="WRITE/PASTE TITLE HERE"
+            *ngIf="!formSubmitted"
+          />
+          <p class="error-text" *ngIf="studentForm.get('issue2.title').hasError('required') && studentForm.get('issue2.title').touched && !formSubmitted">
+            This field is Required.
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.title').value }}</p>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="content"
+            placeholder="WRITE/PASTE CONTENT HERE"
+            *ngIf="!formSubmitted"
+          ></textarea>
+          <div class="textarea-footer" *ngIf="!formSubmitted">
+            ( Maximum 250 words )
+          </div>
+          <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('required') && studentForm.get('issue2.content').touched && !formSubmitted">
+            This field is Required. 
+          </p>
+          <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('maxWords') && studentForm.get('issue2.content').touched && !formSubmitted">
+            This maximum length for this field is 250 words. 
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.content').value }}</p>
         </div>
-        <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('required') && studentForm.get('issue2.content').touched && !formSubmitted">
-          This field is Required. 
-        </p>
-        <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('maxWords') && studentForm.get('issue2.content').touched && !formSubmitted">
-          This maximum length for this field is 250 words. 
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.content').value }}</p>
       </div>
-    </div>
-    <div class="form-group" formGroupName="issue3">
-      <label>Topic 3 <span class="required">*</span></label>
-      <div class="form-group-input">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="title"
-          placeholder="WRITE/PASTE TITLE HERE"
-          *ngIf="!formSubmitted"
-        />       
-        <p class="error-text" *ngIf="studentForm.get('issue3.title').hasError('required') && studentForm.get('issue3.title').touched && !formSubmitted">
-          This field is Required. 
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.title').value }}</p>
-        <textarea
-          type="text"
-          class="form-control"
-          formControlName="content"
-          placeholder="WRITE/PASTE CONTENT HERE"
-          *ngIf="!formSubmitted"
-        ></textarea>
-        <div class="textarea-footer" *ngIf="!formSubmitted">
-          ( Maximum 250 words )
+      <div class="form-group" formGroupName="issue3">
+        <label class="space-left">Topic 3 <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="WRITE/PASTE TITLE HERE"
+            *ngIf="!formSubmitted"
+          />       
+          <p class="error-text" *ngIf="studentForm.get('issue3.title').hasError('required') && studentForm.get('issue3.title').touched && !formSubmitted">
+            This field is Required. 
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.title').value }}</p>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="content"
+            placeholder="WRITE/PASTE CONTENT HERE"
+            *ngIf="!formSubmitted"
+          ></textarea>
+          <div class="textarea-footer" *ngIf="!formSubmitted">
+            ( Maximum 250 words )
+          </div>
+          <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('required') && studentForm.get('issue3.content').touched && !formSubmitted">
+            This field is Required. 
+          </p>
+          <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('maxWords') && studentForm.get('issue3.content').touched && !formSubmitted">
+            This maximum length for this field is 250 words. 
+          </p>
+          <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.content').value }}</p>
         </div>
-        <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('required') && studentForm.get('issue3.content').touched && !formSubmitted">
-          This field is Required. 
-        </p>
-        <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('maxWords') && studentForm.get('issue3.content').touched && !formSubmitted">
-          This maximum length for this field is 250 words. 
-        </p>
-        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.content').value }}</p>
       </div>
     </div>
     <div class="">

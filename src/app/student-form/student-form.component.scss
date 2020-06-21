@@ -100,6 +100,10 @@
 }
 
 .list-container {
+  outline: 1px solid var(--color-grey-light-3);
+  outline-offset: 1.4rem;
+  margin: 2rem 0;
+  border-radius: .5rem;
   .list {
     padding-left: 2rem;
     margin: 1rem 0;
@@ -123,6 +127,9 @@
     text-transform: uppercase;
     border-radius: .5rem;
     transition: all .3s ease-in-out;
+  }
+  .btn-enabled {
+    background: var(--color-btn);
     &:hover {
       background: var(--color-grey-light-3);
       color: var(--color-btn);
@@ -130,11 +137,8 @@
       cursor: pointer;
     }
   }
-  .btn-enabled {
-    background: var(--color-btn);
-  }
   .btn-disabled {
-    background: var(--color-btn-disabled);
+    background: linear-gradient(to right, rgba(#fff, .5), rgba(#fff, .5)), var(--color-btn-disabled);
   }
 }
 
@@ -163,11 +167,11 @@ label {
     .student-image-container {
       top: 9rem;
       right: 4rem;
-      height: 12rem;
-      width: 12rem;
-      transform: translate(-4rem, -2rem);
+      height: 10rem;
+      width: 10rem;
+      transform: translate(-5rem, -2rem);
       .student-image {
-        height: 12rem;
+        height: 10rem;
       }
     }
   
@@ -181,6 +185,18 @@ label {
         padding-left: 5%;
         margin-top: 1rem;
       }
+      .text-label {
+        width: 15%;
+      }
+      .text-label + .form-group-input {
+        width: 50%;
+        margin: .5rem auto 0 0;
+      }
+    }
+
+    .cards {
+      margin-top: 2.5rem;
+      align-items: flex-start;
     }
 
     .btn-container {
@@ -189,5 +205,8 @@ label {
         width: 91%;
       }
     }
+  }
+  .list-container  {
+    outline-offset: 1rem;
   }
 }
