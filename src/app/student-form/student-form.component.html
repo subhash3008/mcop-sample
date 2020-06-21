@@ -1,0 +1,377 @@
+<div class="student-form-container">
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" *ngIf="studentForm">
+    <div class="student-image-container">
+      <div class="student-image">
+        <img src="/assets/images/photo.jpeg" alt="student photo">
+      </div>
+    </div>
+    <div class="post-selection">
+      <label>Post Applied For : </label>
+      <input type="checkbox" name="schoolPrefect" #schoolPrefect value="schoolPrefect" (change)="postSelectionChange($event)" [disabled]="formSubmitted">
+      <label class="post-selection-label" for="schoolPrefect">School Prefect</label>
+      <input type="checkbox" name="housePrefect" #housePrefect value="housePrefect" (change)="postSelectionChange($event)" [disabled]="formSubmitted">
+      <label class="post-selection-label" for="housePrefect">House Prefect</label>
+    </div>
+    <div class="form-group">
+      <label>Name : </label>
+      <div class="form-group-input">
+        <span class="form-text">{{ studentDetails?.studentName }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Class : </label>
+      <div class="form-group-input">
+        <span class="form-text">{{ studentDetails?.class }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>House : </label>
+      <div class="form-group-input">
+        <span class="form-text">{{ studentDetails?.house }}</span>
+      </div>
+    </div>
+    <div class="cards">
+      <label class="cards-left">Cards : </label>
+      <div class="cards-right">
+        <div class="card-group">
+          <label class="card-group-label form-text">WORTHY : </label>
+          <span>0</span>
+        </div>
+        <div class="card-group">
+          <label class="card-group-label form-text">INTELLECT : </label>
+          <span>3</span>
+        </div>
+        <div class="card-group">
+          <label class="card-group-label form-text">STATURE : </label>
+          <span>1</span>
+        </div>
+        <div class="card-group">
+          <label class="card-group-label form-text">EMOTION : </label>
+          <span>0</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>1. Record of responsibilitied held so far : <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="resposibilitiesHeld"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('resposibilitiesHeld').hasError('required') && studentForm.get('resposibilitiesHeld').touched && !formSubmitted">
+          This field is Required
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('resposibilitiesHeld').value }}</span>
+      </div>
+    </div>
+    <div formGroupName="academicPerformance">
+      <label>2. Academic Performance</label>
+      <div class="form-group">
+        <label class="space-left">a. Total (%) - 5 Subjects <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input type="number" class="form-control" formControlName="total" *ngIf="!formSubmitted" />
+          <p class="error-text" *ngIf="!formSubmitted">
+            <span *ngIf="studentForm.get('academicPerformance.total').hasError('required') && studentForm.get('academicPerformance.total').touched">
+              Total Percentage is Required
+            </span>
+            <span *ngIf="studentForm.get('academicPerformance.total').hasError('max') && studentForm.get('academicPerformance.total').touched">
+              Maximum value for total percentage is 100
+            </span>
+            <span *ngIf="studentForm.get('academicPerformance.total').hasError('min') && studentForm.get('academicPerformance.total').touched">
+              Minimum value for total percentage is 0
+            </span>
+          </p>
+          <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('academicPerformance.total').value }}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="space-left">b. 11th Midterm (%) (if not applicable fill NA) <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="eleventhMidTermPerc"
+            placeholder="TO BE FILLED BY CLASS TEACHER"
+            *ngIf="!formSubmitted"
+          />
+          <p class="error-text" *ngIf="!formSubmitted">
+            <span *ngIf="studentForm.get('academicPerformance.eleventhMidTermPerc').hasError('required') && studentForm.get('academicPerformance.eleventhMidTermPerc').touched">
+              11th Midterm percentage is Required. If not applicable, please fill NA
+            </span>
+          </p>
+          <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('academicPerformance.eleventhMidTermPerc').value }}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="space-left">c. Attendence (%) <span class="required">*</span></label>
+        <div class="form-group-input">
+          <input
+            type="number"
+            class="form-control"
+            formControlName="attendancePerc"
+            placeholder="TO BE FILLED BY CLASS TEACHER"
+            *ngIf="!formSubmitted"
+          />
+          <p class="error-text" *ngIf="!formSubmitted">
+            <span *ngIf="studentForm.get('academicPerformance.attendancePerc').hasError('required') && studentForm.get('academicPerformance.attendancePerc').touched">
+              Attendance Percentage is Required
+            </span>
+            <span *ngIf="studentForm.get('academicPerformance.attendancePerc').hasError('max') && studentForm.get('academicPerformance.attendancePerc').touched">
+              Maximum value for attendance percentage is 100
+            </span>
+            <span *ngIf="studentForm.get('academicPerformance.attendancePerc').hasError('min') && studentForm.get('academicPerformance.attendancePerc').touched">
+              Minimum value for attendance percentage is 0
+            </span>
+          </p>
+          <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('academicPerformance.attendancePerc').value }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>3. Have you failed in any subject in Midterm: <span class="required">*</span></label>
+      <div class="form-group-input">
+        <!-- <input
+          type="text"
+          class="form-control"
+          formControlName="failedMidtermOrNot"
+        /> -->
+        <select name="failedMidtermOrNot" formControlName="failedMidtermOrNot" *ngIf="!formSubmitted">
+          <option [value]="null" readonly>Please Select</option>
+          <option value="yes">YES</option>
+          <option value="no">NO</option>
+        </select>
+        <p class="error-text" *ngIf="studentForm.get('failedMidtermOrNot').hasError('required') && studentForm.get('failedMidtermOrNot').touched && !formSubmitted">
+          This field is Required
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('failedMidtermOrNot').value }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>4. Co Scholistic Achievement: <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="scholasticAchievement"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('scholasticAchievement').hasError('required') && studentForm.get('scholasticAchievement').touched && !formSubmitted">
+          This field is Required. If not applicable, please fill NA
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('scholasticAchievement').value }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>5. Sports Achievement: <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="sportsAchievement"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('sportsAchievement').hasError('required') && studentForm.get('sportsAchievement').touched && !formSubmitted">
+          This field is Required. If not applicable, please fill NA
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('sportsAchievement').value }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>6. Other Achievements: <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="otherAchievement"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('otherAchievement').hasError('required') && studentForm.get('otherAchievement').touched && !formSubmitted">
+          This field is Required. If not applicable, please fill NA
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('otherAchievement').value }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>7. Any Case of indiscipline that you have been invoved in: <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="indisciplineActions"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('indisciplineActions').hasError('required') && studentForm.get('indisciplineActions').touched && !formSubmitted">
+          This field is Required. If not applicable, please fill NA
+        </p>
+        <span class="form-text" *ngIf="formSubmitted">{{ studentForm.get('indisciplineActions').value }}</span>
+      </div>
+    </div>
+    <div class="list-container">
+      <label>
+        8. Choose THREE School related 'issues' and describe them in 250
+        words.The purpose is to make you recognize "what isan issue/problem."We
+        want your honest opinion and the school would address issues that you as
+        prospective leaders are grappling with.Categrise your report into four
+        parts.
+      </label>
+      <ul class="list space-left">
+        <li>What I see(truthActual fact)</li>
+        <li>What I hear (might not be true but it is going around, might include hearsay).</li>
+        <li>What I perceive(your understanding of the issue)</li>
+        <li>What I suggest/solutions.</li>
+      </ul>
+    </div>
+    <div class="form-group" formGroupName="issue1">
+      <label>Topic 1 <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="WRITE/PASTE TITLE HERE"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('issue1.title').hasError('required') && studentForm.get('issue1.title').touched && !formSubmitted">
+          This field is Required.
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.title').value }}</p>
+        <textarea
+          type="text"
+          class="form-control"
+          formControlName="content"
+          placeholder="WRITE/PASTE CONTENT HERE"
+          *ngIf="!formSubmitted"
+        ></textarea>
+        <div class="textarea-footer" *ngIf="!formSubmitted">
+          ( Maximum 250 words )
+        </div>
+        <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('required') && studentForm.get('issue1.content').touched && !formSubmitted">
+          This field is Required. 
+        </p>
+        <p class="error-text" *ngIf="studentForm.get('issue1.content').hasError('maxWords') && studentForm.get('issue1.content').touched && !formSubmitted">
+          This maximum length for this field is 250 words. 
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue1.content').value }}</p>
+      </div>
+    </div>
+    <div class="form-group" formGroupName="issue2">
+      <label>Topic 2 <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="WRITE/PASTE TITLE HERE"
+          *ngIf="!formSubmitted"
+        />
+        <p class="error-text" *ngIf="studentForm.get('issue2.title').hasError('required') && studentForm.get('issue2.title').touched && !formSubmitted">
+          This field is Required.
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.title').value }}</p>
+        <textarea
+          type="text"
+          class="form-control"
+          formControlName="content"
+          placeholder="WRITE/PASTE CONTENT HERE"
+          *ngIf="!formSubmitted"
+        ></textarea>
+        <div class="textarea-footer" *ngIf="!formSubmitted">
+          ( Maximum 250 words )
+        </div>
+        <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('required') && studentForm.get('issue2.content').touched && !formSubmitted">
+          This field is Required. 
+        </p>
+        <p class="error-text" *ngIf="studentForm.get('issue2.content').hasError('maxWords') && studentForm.get('issue2.content').touched && !formSubmitted">
+          This maximum length for this field is 250 words. 
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue2.content').value }}</p>
+      </div>
+    </div>
+    <div class="form-group" formGroupName="issue3">
+      <label>Topic 3 <span class="required">*</span></label>
+      <div class="form-group-input">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="WRITE/PASTE TITLE HERE"
+          *ngIf="!formSubmitted"
+        />       
+        <p class="error-text" *ngIf="studentForm.get('issue3.title').hasError('required') && studentForm.get('issue3.title').touched && !formSubmitted">
+          This field is Required. 
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.title').value }}</p>
+        <textarea
+          type="text"
+          class="form-control"
+          formControlName="content"
+          placeholder="WRITE/PASTE CONTENT HERE"
+          *ngIf="!formSubmitted"
+        ></textarea>
+        <div class="textarea-footer" *ngIf="!formSubmitted">
+          ( Maximum 250 words )
+        </div>
+        <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('required') && studentForm.get('issue3.content').touched && !formSubmitted">
+          This field is Required. 
+        </p>
+        <p class="error-text" *ngIf="studentForm.get('issue3.content').hasError('maxWords') && studentForm.get('issue3.content').touched && !formSubmitted">
+          This maximum length for this field is 250 words. 
+        </p>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('issue3.content').value }}</p>
+      </div>
+    </div>
+    <div class="">
+      <label>
+        9. Referees
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="space-left">House Incharge:</label>
+      <div class="form-group-input">
+        <span class="form-text">{{ studentDetails?.houseIncharge }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="space-left">Class Teacher:</label>
+      <div class="form-group-input">
+        <span class="form-text">{{ studentDetails?.classTeacher }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="space-left">Any Other teacher:</label>
+      <div class="form-group-input">
+        <select name="otherReferee" formControlName="otherReferee" *ngIf="!formSubmitted">
+          <option [value]="null" readonly>Please select</option>
+          <option *ngFor="let teacher of teacherList" [value]="teacher">
+            {{teacher}}
+          </option>
+        </select>
+        <p class="form-text" *ngIf="formSubmitted">{{ studentForm.get('otherReferee').value }}</p>
+      </div>
+    </div>
+    <div class="btn-container">
+      <div class="blank"></div>
+      <button 
+        class="btn" 
+        type="submit" 
+        [disabled]="studentForm.invalid" 
+        [ngClass]="{
+          'btn-disabled': studentForm.invalid,
+          'btn-enabled': !studentForm.invalid
+        }"
+        *ngIf="!formSubmitted"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  <swal
+    #successSwal
+    title="Form Submitted"
+    text="Your nomination form has been submitted"
+    icon="success"
+    (confirm)="clearStudentForm()">
+  </swal>
+</div>
