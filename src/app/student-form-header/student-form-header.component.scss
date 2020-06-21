@@ -59,3 +59,14 @@
     }
   }
 }
+
+@media (max-width: 450px) {
+  .header {
+    &__center {
+      &__heading {
+        font-size: 1.8rem;
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}
