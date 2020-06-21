@@ -154,3 +154,39 @@ label {
 .required {
   color: crimson;
 }
+
+
+@media (max-width: 720px) {
+  .student-form-container {
+    padding: 3rem;
+    .student-image-container {
+      top: 9rem;
+      right: 4rem;
+      height: 12rem;
+      width: 12rem;
+      transform: translate(-4rem, -2rem);
+      .student-image {
+        height: 12rem;
+      }
+    }
+  
+    .form-group {
+      flex-flow: row wrap;
+      label {
+        width: 100%;
+      }
+      .form-group-input {
+        width: 95%;
+        padding-left: 5%;
+        margin-top: 1rem;
+      }
+    }
+
+    .btn-container {
+      text-align: center;
+      .btn {
+        width: 91%;
+      }
+    }
+  }
+}
